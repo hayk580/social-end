@@ -1,0 +1,35 @@
+// User Reducer
+export const SET_TOKEN = 'SET_TOKEN';
+export const DELETE_TOKEN = 'DELETE_TOKEN';
+export const SET_USER = 'SET_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
+
+// Posts Reducer
+export const ADD_POST = 'ADD_POST';
+export const ADD_HOMEWORK = 'ADD_HOMEWORK';
+export const ADD_SCHEDULES = 'ADD_SCHEDULES';
+export const GET_POSTS = 'GET_POSTS';
+export const GET_POST = 'GET_POST';
+export const ADD_COURSE = 'ADD_COURSE';
+export const ADD_COURSE_MODULE = 'ADD_COURSE_MODULE';
+export const GET_HOMEWORKS = 'GET_HOMEWORKS';
+export const GET_HOMEWORK = 'GET_HOMEWORK';
+export const GET_COURSE = 'GET_COURSE'
+export const SET_COURSE = 'SET_COURSE'
+export const SET_COURSES = 'SET_COURSES'
+export const SET_GROUPSPOSTS = 'SET_GROUPSPOSTS'
+export const GET_COURSES = 'GET_COURSES:'
+export const DELETE_POST = 'DELETE_POST';
+export const SET_POSTS = 'SET_POSTS';
+export const SET_HOMEWORKS = 'SET_HOMEWORKS';
+export const REMOVE_ALL_POSTS = 'REMOVE_ALL_POSTS';
+export const REMOVE_ALL_HOMEWORKS = 'REMOVE_ALL_HOMEWORKS';
+export const REMOVE_ALL_COURSES = 'REMOVE_ALL_COURSES';
+export const REMOVE_ALL_COURSE_MODULES = 'REMOVE_ALL_COURSE_MODULES';
+export const GET_COURSE_MODULE = 'GET_COURSE_MODULE';
+export const GET_COURSE_MODULES = 'GET_COURSE_MODULES';
+export const SET_COURSE_MODULES = 'SET_COURSE_MODULES';
+export const SET_COURSES_MODULES = 'SET_COURSES_MODULES';
+export const ADD_GROUP = 'ADD_GROUP'
+
+export const ADD_QUESTION = 'ADD_QUESTION'

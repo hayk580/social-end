@@ -1,0 +1,11 @@
+@import url("https://cdn.syncfusion.com/ej2/bootstrap.css");
+.Card {
+    width: 100rem;
+    height: 100%;
+  }
+  
+  
+.e-table			
+{
+    background-color: blueviolet;
+}
