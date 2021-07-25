@@ -118,19 +118,20 @@ class Sidebar extends Component {
           <li className={ this.isPathActive('/dashboard') ? 'nav-item menu-items active' : 'nav-item menu-items' }>
             <Link className="nav-link" to="/dashboard">
               <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
-              <span className="menu-title"><Trans>Վահանակ</Trans></span>
+              <span className="menu-title"><Trans>Գլխավոր</Trans></span>
             </Link>
           </li>
 
-                     <li className={ this.isPathActive('/course') ? 'nav-item menu-items active' : 'nav-item menu-items' }>
+                     {/* <li className={ this.isPathActive('/course') ? 'nav-item menu-items active' : 'nav-item menu-items' }>
             <Link className="nav-link" to="/course">
               <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
               <span className="menu-title"><Trans>Վահանակ</Trans></span>
             </Link>
-          </li>
+          </li> */}
 
                   <li className="nav-item"> <Link className={ this.isPathActive('/tables/basic-table') ? 'nav-link active' : 'nav-link' } to="/tables/basic-table">
                   <span className="menu-icon"> <i className="mdi mdi-table-large"></i></span>
+                  <span className="menu-title"><Trans>Առաջադրանքների <br />  Կառավարում</Trans></span>
 
                     <Trans> </Trans></Link></li>
 
@@ -140,13 +141,13 @@ class Sidebar extends Component {
               <span className="menu-icon">
                 <i className="mdi mdi-playlist-play"></i>
               </span>
-              <span className="menu-title"><Trans>Form Elements</Trans></span>
+              <span className="menu-title"><Trans>Ուսանողներ</Trans></span>
               <i className="menu-arrow"></i>
             </div>
             <Collapse in={ this.state.formElementsMenuOpen }>
               <div>
                 <ul className="nav flex-column sub-menu">
-                  <li className="nav-item"> <Link className={ this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link' } to="/form-elements/basic-elements"><Trans>Basic Elements</Trans></Link></li>
+                  <li className="nav-item"> <Link className={ this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link' } to="/form-elements/basic-elements"><Trans>գրանցել ուսանող</Trans></Link></li>
                 </ul>
               </div>
             </Collapse>
@@ -157,13 +158,14 @@ class Sidebar extends Component {
               <span className="menu-icon">
                 <i className="mdi mdi-contacts"></i>
               </span>
-              <span className="menu-title"><Trans>Icons</Trans></span>
+              <span className="menu-title"><Trans>Դասընթացների <br /> Կառավարում</Trans></span>
               <i className="menu-arrow"></i>
             </div>
             <Collapse in={ this.state.iconsMenuOpen }>
               <div>
                 <ul className="nav flex-column sub-menu">
-                  <li className="nav-item"> <Link className={ this.isPathActive('/icons/mdi') ? 'nav-link active' : 'nav-link' } to="/icons/mdi"><Trans>Material</Trans></Link></li>
+                <li className="nav-item"> <Link className={ this.isPathActive('/icons/mdi') ? 'nav-link active' : 'nav-link' } to="/icons/mdi"><Trans>Նախագծում</Trans></Link></li>
+                  <li className="nav-item"> <Link className={ this.isPathActive('/CoursePage') ? 'nav-link active' : 'nav-link' } to="/CoursePage"><Trans>Դասընթացներ</Trans></Link></li>
                 </ul>
               </div>
             </Collapse>

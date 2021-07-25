@@ -29,7 +29,9 @@ const Error500 = lazy(() => import('./error-pages/Error500'));
 const Login = lazy(() => import('./user-pages/Login'));
 const Register1 = lazy(() => import('./user-pages/Register'));
 
-
+const CoursePage = lazy(() => import('./course_page/Course_page'));
+ 
+const SingleCoursePage = lazy(()=> import('./single_course_page /Single_course_page'));
 class AppRoutes extends Component {
   render () {
     return (
@@ -43,8 +45,11 @@ class AppRoutes extends Component {
           <Route path="/basic-ui/typography" component={ Typography } />
          
          <Route path="/lesson_calendar" component={LessonCalendar} />
-
+         <Route path="/CoursePage" component={CoursePage} />
          <Route path="/lesson_schedule" component={Lesson_Schedule} />
+
+         <Route path="/SingleCoursePage" component={SingleCoursePage} />
+         <Route path="/SingleCoursePage" component={SingleCoursePage} />
       {/* <Route path="/task_board" component={TrelloTaskBoard} /> */}
 
 

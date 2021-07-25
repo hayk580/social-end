@@ -137,6 +137,65 @@ export class Dashboard extends Component {
             </div>
           </div>
         </div> */}
+           <div className="row">
+          <div className="col-sm-4 grid-margin">
+            <div className="card">
+              <div className="card-body">
+                <h5>Դասընթացներ</h5>
+                <div className="row">
+                  <div className="col-8 col-sm-12 col-xl-8 my-auto">
+                    <div className="d-flex d-sm-block d-md-flex align-items-center">
+                      <h2 className="mb-0">55</h2>
+                      <p className="text-success ml-2 mb-0 font-weight-medium">+ 3 այս ամիս</p>
+                    </div>
+                    <h6 className="text-muted font-weight-normal">11.38% Անցյալ ամիսվանից</h6>
+                  </div>
+                  <div className="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                    <i className="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm-4 grid-margin">
+            <div className="card">
+              <div className="card-body">
+                <h5>Ուսանողներ</h5>
+                <div className="row">
+                  <div className="col-8 col-sm-12 col-xl-8 my-auto">
+                    <div className="d-flex d-sm-block d-md-flex align-items-center">
+                      <h2 className="mb-0">45850</h2>
+                      <p className="text-success ml-2 mb-0 font-weight-medium">+8 այս ամիս</p>
+                    </div>
+                    <h6 className="text-muted font-weight-normal"> 9.61% Անցյալ ամիսվանից</h6>
+                  </div>
+                  <div className="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                    <i className="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm-4 grid-margin">
+            <div className="card">
+              <div className="card-body">
+                <h5>Աշխատակիցներ</h5>
+                <div className="row">
+                  <div className="col-8 col-sm-12 col-xl-8 my-auto">
+                    <div className="d-flex d-sm-block d-md-flex align-items-center">
+                      <h2 className="mb-0">2039</h2>
+                      <p className="text-danger ml-2 mb-0 font-weight-medium">-2 այս ամիս </p>
+                    </div>
+                    <h6 className="text-muted font-weight-normal">2.27% Անցյալ ամիսվանից</h6>
+                  </div>
+                  <div className="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                    <i className="icon-lg mdi mdi-monitor text-success ml-auto"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="row">
           <div className="col-md-4 grid-margin stretch-card">
             <div className="card">
@@ -305,61 +364,122 @@ export class Dashboard extends Component {
             </div>
           </div>
         </div>
+     
+
         <div className="row">
-          <div className="col-sm-4 grid-margin">
+          <div className="col-md-6 col-xl-4 grid-margin stretch-card">
             <div className="card">
               <div className="card-body">
-                <h5>Դասընթացներ</h5>
-                <div className="row">
-                  <div className="col-8 col-sm-12 col-xl-8 my-auto">
-                    <div className="d-flex d-sm-block d-md-flex align-items-center">
-                      <h2 className="mb-0">55</h2>
-                      <p className="text-success ml-2 mb-0 font-weight-medium">+ 3 այս ամիս</p>
+                <div className="d-flex flex-row justify-content-between">
+                  <h4 className="card-title">Նամակներ</h4>
+                  <p className="text-muted mb-1 small">View all</p>
+                </div>
+                <div className="preview-list">
+                  <div className="preview-item border-bottom">
+                    <div className="preview-thumbnail">
+                      <img src={require('../../assets/images/faces/face6.jpg')} alt="face" className="rounded-circle" />
                     </div>
-                    <h6 className="text-muted font-weight-normal">11.38% Անցյալ ամիսվանից</h6>
+                    <div className="preview-item-content d-flex flex-grow">
+                      <div className="flex-grow">
+                        <div className="d-flex d-md-block d-xl-flex justify-content-between">
+                          <h6 className="preview-subject">Leonard</h6>
+                          <p className="text-muted text-small">5 minutes ago</p>
+                        </div>
+                        <p className="text-muted">Դե, կարծես թե հիմա աշխատում է.</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                    <i className="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
+                  <div className="preview-item border-bottom">
+                    <div className="preview-thumbnail">
+                      <img src={require('../../assets/images/faces/face8.jpg')} alt="face" className="rounded-circle" />
+                    </div>
+                    <div className="preview-item-content d-flex flex-grow">
+                      <div className="flex-grow">
+                        <div className="d-flex d-md-block d-xl-flex justify-content-between">
+                          <h6 className="preview-subject">Luella Mills</h6>
+                          <p className="text-muted text-small">10 Minutes Ago</p>
+                        </div>
+                        <p className="text-muted">Դե, կարծես թե հիմա աշխատում է:.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="preview-item border-bottom">
+                    <div className="preview-thumbnail">
+                      <img src={require('../../assets/images/faces/face9.jpg')} alt="face" className="rounded-circle" />
+                    </div>
+                    <div className="preview-item-content d-flex flex-grow">
+                      <div className="flex-grow">
+                        <div className="d-flex d-md-block d-xl-flex justify-content-between">
+                          <h6 className="preview-subject">Ethel Kelly</h6>
+                          <p className="text-muted text-small">2 Hours Ago</p>
+                        </div>
+                        <p className="text-muted">քիչմ օպտիմիզացնեք բալասները</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="preview-item border-bottom">
+                    <div className="preview-thumbnail">
+                      <img src={require('../../assets/images/faces/face11.jpg')} alt="face" className="rounded-circle" />
+                    </div>
+                    <div className="preview-item-content d-flex flex-grow">
+                      <div className="flex-grow">
+                        <div className="d-flex d-md-block d-xl-flex justify-content-between">
+                          <h6 className="preview-subject">Herman May</h6>
+                          <p className="text-muted text-small">4 Hours Ago</p>
+                        </div>
+                        <p className="text-muted">Շատ շնորհակալություն. Դա հեշտ էր շտկել:.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-sm-4 grid-margin">
+          {/* <div className="col-md-6 col-xl-4 grid-margin stretch-card">
             <div className="card">
               <div className="card-body">
-                <h5>Ուսանողներ</h5>
-                <div className="row">
-                  <div className="col-8 col-sm-12 col-xl-8 my-auto">
-                    <div className="d-flex d-sm-block d-md-flex align-items-center">
-                      <h2 className="mb-0">45850</h2>
-                      <p className="text-success ml-2 mb-0 font-weight-medium">+8 այս ամիս</p>
+                <h4 className="card-title">Portfolio Slide</h4>
+                <Slider className="portfolio-slider" {...this.sliderSettings}>
+                  <div className="item">
+                    <img src={require('../../assets/images/dashboard/Rectangle.jpg')} alt="carousel-item" />
+                  </div>
+                  <div className="item">
+                    <img src={require('../../assets/images/dashboard/Img_5.jpg')} alt="carousel-item" />
+                  </div>
+                  <div className="item">
+                    <img src={require('../../assets/images/dashboard/img_6.jpg')} alt="carousel-item" />
+                  </div>
+                </Slider>
+                <div className="d-flex py-4">
+                  <div className="preview-list w-100">
+                    <div className="preview-item p-0">
+                      <div className="preview-thumbnail">
+                        <img src={require('../../assets/images/faces/face12.jpg')} className="rounded-circle" alt="face" />
+                      </div>
+                      <div className="preview-item-content d-flex flex-grow">
+                        <div className="flex-grow">
+                          <div className="d-flex d-md-block d-xl-flex justify-content-between">
+                            <h6 className="preview-subject">CeeCee Bass</h6>
+                            <p className="text-muted text-small">4 Hours Ago</p>
+                          </div>
+                          <p className="text-muted">Well, it seems to be working now.</p>
+                        </div>
+                      </div>
                     </div>
-                    <h6 className="text-muted font-weight-normal"> 9.61% Անցյալ ամիսվանից</h6>
                   </div>
-                  <div className="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                    <i className="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
-                  </div>
+                </div>
+                <p className="text-muted">Well, it seems to be working now. </p>
+                <div className="progress progress-md portfolio-progress">
+                  <div className="progress-bar bg-success" role="progressbar" style={{width: '50%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-sm-4 grid-margin">
+          </div> */}
+          <div className="col-md-12 col-xl-4 grid-margin stretch-card">
             <div className="card">
               <div className="card-body">
-                <h5>Աշխատակիցներ</h5>
-                <div className="row">
-                  <div className="col-8 col-sm-12 col-xl-8 my-auto">
-                    <div className="d-flex d-sm-block d-md-flex align-items-center">
-                      <h2 className="mb-0">2039</h2>
-                      <p className="text-danger ml-2 mb-0 font-weight-medium">-2 այս ամիս </p>
-                    </div>
-                    <h6 className="text-muted font-weight-normal">2.27% Անցյալ ամիսվանից</h6>
-                  </div>
-                  <div className="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                    <i className="icon-lg mdi mdi-monitor text-success ml-auto"></i>
-                  </div>
-                </div>
+                <h4 className="card-title">Անելիքների ցանկ</h4>
+                <TodoListComponent />
               </div>
             </div>
           </div>
@@ -508,124 +628,6 @@ export class Dashboard extends Component {
                     </tbody>
                   </table>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6 col-xl-4 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <div className="d-flex flex-row justify-content-between">
-                  <h4 className="card-title">Նամակներ</h4>
-                  <p className="text-muted mb-1 small">View all</p>
-                </div>
-                <div className="preview-list">
-                  <div className="preview-item border-bottom">
-                    <div className="preview-thumbnail">
-                      <img src={require('../../assets/images/faces/face6.jpg')} alt="face" className="rounded-circle" />
-                    </div>
-                    <div className="preview-item-content d-flex flex-grow">
-                      <div className="flex-grow">
-                        <div className="d-flex d-md-block d-xl-flex justify-content-between">
-                          <h6 className="preview-subject">Leonard</h6>
-                          <p className="text-muted text-small">5 minutes ago</p>
-                        </div>
-                        <p className="text-muted">Դե, կարծես թե հիմա աշխատում է.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="preview-item border-bottom">
-                    <div className="preview-thumbnail">
-                      <img src={require('../../assets/images/faces/face8.jpg')} alt="face" className="rounded-circle" />
-                    </div>
-                    <div className="preview-item-content d-flex flex-grow">
-                      <div className="flex-grow">
-                        <div className="d-flex d-md-block d-xl-flex justify-content-between">
-                          <h6 className="preview-subject">Luella Mills</h6>
-                          <p className="text-muted text-small">10 Minutes Ago</p>
-                        </div>
-                        <p className="text-muted">Դե, կարծես թե հիմա աշխատում է:.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="preview-item border-bottom">
-                    <div className="preview-thumbnail">
-                      <img src={require('../../assets/images/faces/face9.jpg')} alt="face" className="rounded-circle" />
-                    </div>
-                    <div className="preview-item-content d-flex flex-grow">
-                      <div className="flex-grow">
-                        <div className="d-flex d-md-block d-xl-flex justify-content-between">
-                          <h6 className="preview-subject">Ethel Kelly</h6>
-                          <p className="text-muted text-small">2 Hours Ago</p>
-                        </div>
-                        <p className="text-muted">քիչմ օպտիմիզացնեք բալասները</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="preview-item border-bottom">
-                    <div className="preview-thumbnail">
-                      <img src={require('../../assets/images/faces/face11.jpg')} alt="face" className="rounded-circle" />
-                    </div>
-                    <div className="preview-item-content d-flex flex-grow">
-                      <div className="flex-grow">
-                        <div className="d-flex d-md-block d-xl-flex justify-content-between">
-                          <h6 className="preview-subject">Herman May</h6>
-                          <p className="text-muted text-small">4 Hours Ago</p>
-                        </div>
-                        <p className="text-muted">Շատ շնորհակալություն. Դա հեշտ էր շտկել:.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* <div className="col-md-6 col-xl-4 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <h4 className="card-title">Portfolio Slide</h4>
-                <Slider className="portfolio-slider" {...this.sliderSettings}>
-                  <div className="item">
-                    <img src={require('../../assets/images/dashboard/Rectangle.jpg')} alt="carousel-item" />
-                  </div>
-                  <div className="item">
-                    <img src={require('../../assets/images/dashboard/Img_5.jpg')} alt="carousel-item" />
-                  </div>
-                  <div className="item">
-                    <img src={require('../../assets/images/dashboard/img_6.jpg')} alt="carousel-item" />
-                  </div>
-                </Slider>
-                <div className="d-flex py-4">
-                  <div className="preview-list w-100">
-                    <div className="preview-item p-0">
-                      <div className="preview-thumbnail">
-                        <img src={require('../../assets/images/faces/face12.jpg')} className="rounded-circle" alt="face" />
-                      </div>
-                      <div className="preview-item-content d-flex flex-grow">
-                        <div className="flex-grow">
-                          <div className="d-flex d-md-block d-xl-flex justify-content-between">
-                            <h6 className="preview-subject">CeeCee Bass</h6>
-                            <p className="text-muted text-small">4 Hours Ago</p>
-                          </div>
-                          <p className="text-muted">Well, it seems to be working now.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-muted">Well, it seems to be working now. </p>
-                <div className="progress progress-md portfolio-progress">
-                  <div className="progress-bar bg-success" role="progressbar" style={{width: '50%'}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-            </div>
-          </div> */}
-          <div className="col-md-12 col-xl-4 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <h4 className="card-title">Անելիքների ցանկ</h4>
-                <TodoListComponent />
               </div>
             </div>
           </div>

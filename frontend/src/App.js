@@ -63,11 +63,11 @@ function App() {
         <Route path='/schedule/:schedule_id' render={(props) => <SchedulePage {...props} key={(Math.random() * 10)}/>} />
         <Route path='/course/:course_id' render={(props) => <CoursePage {...props} key={(Math.random() * 10)}/>} />
         <Route path='/homework/:slug' render={(props) => <HomeworkPage {...props} key={(Math.random() * 10)}/>} />
-s        {/* <Route path='/course_module/:course_module_id' render={(props) => <Course_modulePage {...props} key={(Math.random() * 10)}/>} /> */}
+        {/* <Route path='/course_module/:course_module_id' render={(props) => <Course_modulePage {...props} key={(Math.random() * 10)}/>} /> */}
 
         <Route path='/group/:group_id' render={(props) => <GroupPage {...props} key={(Math.random() * 10)}/>} />
 
-        <Redirect from='*' to='/' />
+        <Redirect from='*' to='/dashboard' />
       </Switch>
     </Router>
   );
