@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, {useState, useEffect} from 'react';
+
 import { Doughnut } from 'react-chartjs-2';
 import Slider from "react-slick";
 import { TodoListComponent } from '../apps/TodoList'
@@ -6,262 +7,233 @@ import { VectorMap } from "react-jvectormap"
 
 import { Form } from 'react-bootstrap';
 
+import Day from '../Day/Day';
+import CalendarHeader from '../CalendarHeader/CalendarHeader';
+import NewEventModal from '../NewEventModal/NewEvenetModal';
+import DeleteEventModal from '../DeleteEventModal/DeleteEvenetModal';
+import { useDate } from '../Hooks/useDate';
+import '../../index.css';
+import moment from 'react-moment';
+import { func } from 'prop-types';
 
-export class CourseModule extends Component {
-
-  transactionHistoryData =  {
-    labels: ["c++", "java","node.js"],
-    datasets: [{
-        data: [55, 25, 20],
-        backgroundColor: [
-          "#111111","#00d25b","#ffab00"
-        ]
-      }
-    ]
-  };
-
-  transactionHistoryOptions = {
-    responsive: true,
-    maintainAspectRatio: true,
-    segmentShowStroke: false,
-    cutoutPercentage: 70,
-    elements: {
-      arc: {
-          borderWidth: 0
-      }
-    },      
-    legend: {
-      display: false
-    },
-    tooltips: {
-      enabled: true
+function CourseModule() {
+  function sundaysInMonth( m, y ) {
+    var days = new Date( y,m,0 ).getDate();
+    var sundays = [ 8 - (new Date( m +'/01/'+ y ).getDay()) ];
+    for ( var i = sundays[0] + 7; i < days; i += 7 ) {
+      sundays.push( i );
     }
+    return sundays;
   }
 
-  sliderSettings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
+  function mondaysInMonth( m, y ) {
+    var days = new Date( y,m,0 ).getDate();
+    var mondays = [ 8 - (new Date( m +'/01/'+ y ).getDay()) ];
+    for ( var i = mondays[0] + 1; i < days; i += 7 ) {
+      mondays.push( i );
+    }
+    return mondays;
+  }
+ 
+  function tuesdayInMonth( m, y ) {
+    var days = new Date( y,m,0 ).getDate();
+    var tuesday = [ 8 - (new Date( m +'/01/'+ y ).getDay()) ];
+    for ( var i = tuesday[0] + 2; i < days; i += 7 ) {
+      tuesday.push( i );
+    }
+    return tuesday;
   }
 
-  render () {
+
+ 
+  function wednesdayInMonth( m, y ) {
+    var days = new Date( y,m,0 ).getDate();
+    var wednesday = [ 8 - (new Date( m +'/01/'+ y ).getDay()) ];
+    for ( var i = wednesday[0] + 3; i < days; i += 7 ) {
+      wednesday.push( i );
+    }
+    return wednesday;
+  }
+
+
+  function thursdayInMonth( m, y ) {
+    var days = new Date( y,m,0 ).getDate();
+    var thursday = [ 8 - (new Date( m +'/01/'+ y ).getDay()) ];
+    for ( var i = thursday[0] + 4; i < days; i += 7 ) {
+      thursday.push( i );
+    }
+    return thursday;
+  }
+
+
+  function fridayInMonth( m, y ) {
+    var days = new Date( y,m,0 ).getDate();
+    var friday = [ 8 - (new Date( m +'/01/'+ y ).getDay()) ];
+    for ( var i = friday[0] + 5; i < days; i += 7 ) {
+      friday.push( i );
+    }
+    return friday;
+  }
+
+
+
+
+  function saturdayInMonth( m, y ) {
+    var days = new Date( y,m,0 ).getDate();
+    var saturday = [ 8 - (new Date( m +'/01/'+ y ).getDay()) ];
+    for ( var i = saturday[0] + 6; i < days; i += 7 ) {
+      saturday.push( i );
+    }
+    return saturday;
+  }
+  
+  // alert( sundaysInMonth( 10,2012 ) ); //=> [ 7,14,21,28 ]
+   
+  const [nav, setNav] = useState(0);
+  const [clicked, setClicked] = useState();
+  const sundays = sundaysInMonth(7, 2021);
+  const mondays = mondaysInMonth(7, 2021);
+  const tuesday = tuesdayInMonth(7, 2021);
+  const wednesday = wednesdayInMonth(7, 2021)
+  const thursday = thursdayInMonth(7, 2021)
+  const friday = fridayInMonth(7, 2021)
+  const saturday = saturdayInMonth(7, 2021)
+  
+
+  const MondayInMonth = []
+
+  sundays.map(day => {
+    MondayInMonth.push({title: "դաս", date: `7/${day}/2021`})
+  })
+
+  mondays.map(day => {
+     MondayInMonth.push({title: "դաս", date: `7/${day}/2021`})
+  })
+
+  tuesday.map(day => {
+    MondayInMonth.push({title: "դաս", date: `7/${day}/2021`})
+ })
+
+ wednesday.map(day => {
+  MondayInMonth.push({title: "դաս", date: `7/${day}/2021`})
+})
+
+
+thursday.map(day => {
+  MondayInMonth.push({title: "դաս", date: `7/${day}/2021`})
+})
+
+
+
+friday.map(day => {
+  MondayInMonth.push({title: "դաս", date: `7/${day}/2021`})
+})
+
+saturday.map(day => {
+  MondayInMonth.push({title: "դաս", date: `7/${day}/2021`})
+})
+
+
+  const [events, setEvents] = useState(
+  
+    // localStorage.getItem('events') ? 
+    //   JSON.parse(localStorage.getItem('events')) : 
+    //     []
+    MondayInMonth
+      );
+
+ //moment js 
+ 
+//end moment js 
+
+
+
+
+
+
+
+  const eventForDate = date => events.find(e => e.date === date);
+ 
+
+  useEffect(() => {
+    localStorage.setItem('events', JSON.stringify(events));
+  }, [events]);
+
+  const {days, dateDisplay} = useDate(events, nav);
+
+
     return (
       <div>
-{/*  
-        <div className="row">
-          <div className="col-xl-3 col-sm-6 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-9">
-                    <div className="d-flex align-items-center align-self-start">
-                      <h3 className="mb-0">1420</h3>
-                      <p className="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
-                    </div>
-                  </div>
-                  <div className="col-3">
-                    <div className="icon icon-box-success ">
-                      <span className="mdi mdi-arrow-top-right icon-item"></span>
-                    </div>
-                  </div>
-                </div>
-                <h6 className="text-muted font-weight-normal">Number of students</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-3 col-sm-6 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-9">
-                    <div className="d-flex align-items-center align-self-start">
-                      <h3 className="mb-0">$17.34</h3>
-                      <p className="text-success ml-2 mb-0 font-weight-medium">+11%</p>
-                    </div>
-                  </div>
-                  <div className="col-3">
-                    <div className="icon icon-box-success">
-                      <span className="mdi mdi-arrow-top-right icon-item"></span>
-                    </div>
-                  </div>
-                </div>
-                <h6 className="text-muted font-weight-normal">Revenue current</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-3 col-sm-6 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-9">
-                    <div className="d-flex align-items-center align-self-start">
-                      <h3 className="mb-0">$12.34</h3>
-                      <p className="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p>
-                    </div>
-                  </div>
-                  <div className="col-3">
-                    <div className="icon icon-box-danger">
-                      <span className="mdi mdi-arrow-bottom-left icon-item"></span>
-                    </div>
-                  </div>
-                </div>
-                <h6 className="text-muted font-weight-normal">Daily Income</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-3 col-sm-6 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-9">
-                    <div className="d-flex align-items-center align-self-start">
-                      <h3 className="mb-0">$31.53</h3>
-                      <p className="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
-                    </div>
-                  </div>
-                  <div className="col-3">
-                    <div className="icon icon-box-success ">
-                      <span className="mdi mdi-arrow-top-right icon-item"></span>
-                    </div>
-                  </div>
-                </div>
-                <h6 className="text-muted font-weight-normal">Expense current</h6>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
+      
              
+  <div className="row ">
+  <div className="col-12 grid-margin">
+            <div className="card"></div>
+      <>
+    <div className="App" id="container">
+    
+      <div id="weekdays">
+        <div>Sunday</div>
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wednesday</div>
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Saturday</div>
+      </div>
+
+      <div id="calendar">
+        {days.map((d, index) => (
+          <Day 
+          key={index} 
+          day={d} 
+          onClick={() => {
+            if (d.value !== 'padding') {
+              setClicked(d.date);
+            }
+          }}
+        />
+      ))}
+      </div>
+      <CalendarHeader
+        dateDisplay={dateDisplay}
+        onNext={() => setNav(nav + 1)}
+        onBack={() => setNav(nav - 1)}
+      />
+    </div>
 
 
-        <div className="row">
-        
-          <div className="col-md-12 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <div className="d-flex flex-row justify-content-between">
-                  <h4 className="card-title mb-1">Դասընթացում առկա մոդուլներ</h4>
-                  {/* <p className="text-muted mb-1">Your data status</p> */}
-                </div>
-                <div className="row">
-                  <div className="col-12">
-                    <div className="preview-list">
-                      <div className="preview-item border-bottom">
-                        <div className="preview-thumbnail">
-                          <div className="preview-icon bg-primary">
-                            <i className="mdi mdi-file-document"></i>
-                          </div>
-                        </div>
-                        <div className="preview-item-content d-sm-flex flex-grow">
-                          <div className="flex-grow">
-                            <h6 className="preview-subject">Տարական մաթեմատիկա</h6>
-                            <p className="text-muted mb-0"><span className="">Դասախոս: </span> Գրիգոր Կիրակոսյան</p>
-                          </div>
-                          <div className="mr-auto text-sm-right pt-2 pt-sm-0">
-                            {/* <p className="text-muted"><span className="">Դասախոս: </span> Գ․Կիրակոսայան</p> */}
-                            {/* <p className="text-muted mb-0">30 tasks, 5 issues </p> */}
-                          </div>
-                        </div>
+    {
+        clicked && !eventForDate(clicked) &&
+        <NewEventModal
+          onClose={() => setClicked(null)}
+          onSave={title => {
+            setEvents([ ...events, { title, date: clicked }]);
+            setClicked(null);
+          }}
+        />
+      }
 
+      {
+        clicked && eventForDate(clicked) &&
+        <DeleteEventModal 
+          eventText={eventForDate(clicked).title}
+          onClose={() => setClicked(null)}
+          onDelete={() => {
+            setEvents(events.filter(e => e.date !== clicked));
+            setClicked(null);
+          }}
+        />
+      }
+    </>
+    </div>
 
-                        
-                      </div>
-
-
-
-
-
-                      <div className="preview-item border-bottom">
-                        <div className="preview-thumbnail">
-                          <div className="preview-icon bg-primary">
-                            <i className="mdi mdi-file-document"></i>
-                          </div>
-                        </div>
-                        <div className="preview-item-content d-sm-flex flex-grow">
-                          <div className="flex-grow">
-                            <h6 className="preview-subject">Գծային հանրահաշիվ</h6>
-                            <p className="text-muted mb-0"><span className="">Դասախոս: </span> Գրիգոր Կիրակոսյան</p>
-                          </div>
-                          <div className="mr-auto text-sm-right pt-2 pt-sm-0">
-                            {/* <p className="text-muted"><span className="">Դասախոս: </span> Գ․Կիրակոսայան</p> */}
-                            {/* <p className="text-muted mb-0">30 tasks, 5 issues </p> */}
-                          </div>
-                        </div>
-
-
-                        
-                      </div>
-
-
-
-
-                      <div className="preview-item border-bottom">
-                        <div className="preview-thumbnail">
-                          <div className="preview-icon bg-primary">
-                            <i className="mdi mdi-file-document"></i>
-                          </div>
-                        </div>
-                        <div className="preview-item-content d-sm-flex flex-grow">
-                          <div className="flex-grow">
-                            <h6 className="preview-subject">Դիսկրետ մաթեմատիկա</h6>
-                            <p className="text-muted mb-0"><span className="">Դասախոս: </span> Գրիգոր Կիրակոսյան</p>
-                          </div>
-                          <div className="mr-auto text-sm-right pt-2 pt-sm-0">
-                            {/* <p className="text-muted"><span className="">Դասախոս: </span> Գ․Կիրակոսայան</p> */}
-                            {/* <p className="text-muted mb-0">30 tasks, 5 issues </p> */}
-                          </div>
-                        </div>
-                        
-                      </div>
-
-
-
-                      <div className="preview-item border-bottom">
-                        <div className="preview-thumbnail">
-                          <div className="preview-icon bg-primary">
-                            <i className="mdi mdi-file-document"></i>
-                          </div>
-                        </div>
-                        <div className="preview-item-content d-sm-flex flex-grow">
-                          <div className="flex-grow">
-                            <h6 className="preview-subject">Ալգորիթմներ</h6>
-                            <p className="text-muted mb-0"><span className="">Դասախոս: </span> Գրիգոր Կիրակոսյան</p>
-                          </div>
-                          <div className="mr-auto text-sm-right pt-2 pt-sm-0">
-                            {/* <p className="text-muted"><span className="">Դասախոս: </span> Գ․Կիրակոսայան</p> */}
-                            {/* <p className="text-muted mb-0">30 tasks, 5 issues </p> */}
-                          </div>
-                        </div>
-                        
-                      </div>
-
-
-
-
-
-
-
-                    
-
-
-
-
-                
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-     
+    </div>
         <div className="row ">
           <div className="col-12 grid-margin">
             <div className="card">
               <div className="card-body">
-                <h4 className="card-title">Դասընթացում գրանցված ուսանողներ</h4>
+                <h4 className="card-title">Կուրսի մոդուլում գրանցված ուսանողներ</h4>
                 <div className="table-responsive">
                   <table className="table">
                     <thead>
@@ -398,7 +370,7 @@ export class CourseModule extends Component {
           <div className="col-12 grid-margin">
             <div className="card">
               <div className="card-body">
-                <h4 className="card-title">Դասընթացին մասնակից աշխատակազմ</h4>
+                <h4 className="card-title">Կուրսի մոդուլին  մասնակից աշխատակազմ</h4>
                 <div className="table-responsive">
                   <table className="table">
                     <thead>
@@ -467,9 +439,210 @@ export class CourseModule extends Component {
 
 
 
+
+
+        <div className="row ">
+          <div className="col-12 grid-margin">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">Պարտադիր ռեսուրսների ցուցակ</h4>
+                <div className="table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                       
+                        <th> Վերնագիր  </th>
+                        <th> հեղինակ </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                       
+                        <td>
+                          <div className="d-flex">
+                            <span className="pl-2">Designing Data-Intensive Applications</span>
+                          </div>
+                        </td>
+                        <td> Martin Kleppmann  </td>
+                        <td>
+                          <div className="badge badge-outline-success">Տեսնել</div>
+                        </td>
+                      </tr>
+                      <tr>
+                       
+                       <td>
+                         <div className="d-flex">
+                           <span className="pl-2">Database Internals</span>
+                         </div>
+                       </td>
+                       <td> Alex Petrov  </td>
+                       <td>
+                         <div className="badge badge-outline-success">Տեսնել</div>
+                       </td>
+                     </tr>
+               
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div className="row ">
+          <div className="col-12 grid-margin">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">Լրացուցիչ ռեսուրսների ցուցակ</h4>
+                <div className="table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                       
+                        <th> Վերնագիր  </th>
+                        <th> հեղինակ </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                       
+                        <td>
+                          <div className="d-flex">
+                            <span className="pl-2">Designing Data-Intensive Applications</span>
+                          </div>
+                        </td>
+                        <td> Martin Kleppmann  </td>
+                        <td>
+                          <div className="badge badge-outline-success">Տեսնել</div>
+                        </td>
+                      </tr>
+                      <tr>
+                       
+                       <td>
+                         <div className="d-flex">
+                           <span className="pl-2">Database Internals</span>
+                         </div>
+                       </td>
+                       <td> Alex Petrov  </td>
+                       <td>
+                         <div className="badge badge-outline-success">Տեսնել</div>
+                       </td>
+                     </tr>
+               
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div className="row ">
+          <div className="col-12 grid-margin">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">Պրոեկտներ</h4>
+                <div className="table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th>
+                          <div className="form-check form-check-muted m-0">
+                            <label className="form-check-label">
+                              <input type="checkbox" className="form-check-input" />
+                              <i className="input-helper"></i>
+                            </label>
+                          </div>
+                        </th>
+                        <th> Վերնագիր </th>
+                        <th> Ղեկավար </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div className="form-check form-check-muted m-0">
+                            <label className="form-check-label">
+                              <input type="checkbox" className="form-check-input" />
+                              <i className="input-helper"></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td>
+                        Հայկական որոնողական համակարգ
+                        </td>
+                        <td>
+                          <div className="d-flex">
+                            <img src={require('../../assets/images/faces/face1.jpg')} alt="face" />
+                            <span className="pl-2">Henry Klein</span>
+                          </div>
+                        </td>                        <td>
+                        <div className="badge badge-outline-warning">Ընթացքի մեջ</div>
+                        </td>
+                      </tr>
+                      <tr>
+                      <td>
+                          <div className="form-check form-check-muted m-0">
+                            <label className="form-check-label">
+                              <input type="checkbox" className="form-check-input" />
+                              <i className="input-helper"></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td>
+                        Մերուժ և Լյութո
+                        </td>
+                        <td>
+                          <div className="d-flex">
+                            <img src={require('../../assets/images/faces/face1.jpg')} alt="face" />
+                            <span className="pl-2">Henry Klein</span>
+                          </div>
+                        </td> 
+                        <td>
+                        <div className="badge badge-outline-success">Ավարտված</div>
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                      <td>
+                          <div className="form-check form-check-muted m-0">
+                            <label className="form-check-label">
+                              <input type="checkbox" className="form-check-input" />
+                              <i className="input-helper"></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td>
+                        ԱԹՍ֊ի նախագծում
+                        </td>
+                        <td>
+                          <div className="d-flex">
+                            <img src={require('../../assets/images/faces/face1.jpg')} alt="face" />
+                            <span className="pl-2">Henry Klein</span>
+                          </div>
+                        </td> 
+                        <td>
+                        <div className="badge badge-outline-danger">դեռ սկսված չէ</div>
+                        </td>
+                      </tr>
+               
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div> 
     );
   }
-}
 
-export default SingleCoursePage;
+
+  export default CourseModule;

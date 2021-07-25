@@ -5,6 +5,7 @@ import { TodoListComponent } from '../apps/TodoList'
 import { VectorMap } from "react-jvectormap"
 
 import { Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 export class SingleCoursePage extends Component {
@@ -154,10 +155,13 @@ export class SingleCoursePage extends Component {
                           </div>
                         </div>
                         <div className="preview-item-content d-sm-flex flex-grow">
+                         <Link to="/CourseModule">
                           <div className="flex-grow">
                             <h6 className="preview-subject">Տարական մաթեմատիկա</h6>
                             <p className="text-muted mb-0"><span className="">Դասախոս: </span> Գրիգոր Կիրակոսյան</p>
+                          
                           </div>
+                          </Link>
                           <div className="mr-auto text-sm-right pt-2 pt-sm-0">
                             {/* <p className="text-muted"><span className="">Դասախոս: </span> Գ․Կիրակոսայան</p> */}
                             {/* <p className="text-muted mb-0">30 tasks, 5 issues </p> */}
@@ -464,6 +468,16 @@ export class SingleCoursePage extends Component {
             </div>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+
 
 
 

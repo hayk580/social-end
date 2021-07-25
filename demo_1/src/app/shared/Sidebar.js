@@ -122,6 +122,13 @@ class Sidebar extends Component {
             </Link>
           </li>
 
+          <li className={ this.isPathActive('/Group') ? 'nav-item menu-items active' : 'nav-item menu-items' }>
+            <Link className="nav-link" to="/Group">
+              <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
+              <span className="menu-title"><Trans>Խմբեր</Trans></span>
+            </Link>
+          </li>
+
                      {/* <li className={ this.isPathActive('/course') ? 'nav-item menu-items active' : 'nav-item menu-items' }>
             <Link className="nav-link" to="/course">
               <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
