@@ -38,9 +38,12 @@ const SingleCoursePage = lazy(() => import('./single_course_page /Single_course_
 const Group = lazy(() => import('./group/Group'))
 
 
+const GroupPage = lazy(() => import('./group_page/GroupPage'))
 
 
+const LessonPage = lazy(() => import('./lesson_page/LessonPage'))
 
+const Payment = lazy(() => import('./payment-system/Payment'))
 
 class AppRoutes extends Component {
   render () {
@@ -63,7 +66,11 @@ class AppRoutes extends Component {
       {/* <Route path="/task_board" component={TrelloTaskBoard} /> */}
 
           <Route path="/Group" component={Group} />
-              
+          <Route path="/GroupPage" component={GroupPage} />
+          <Route path="/LessonPage" component={LessonPage} />
+           
+           <Route path="/Payment" CourseModule={Payment} />
+ 
           <Route path="/form-Elements/basic-elements" component={ BasicElements } />
 
           <Route path="/tables/basic-table" component={ BasicTable } />

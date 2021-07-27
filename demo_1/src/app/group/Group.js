@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
 
 export class Group extends Component {
@@ -10,9 +11,13 @@ export class Group extends Component {
 
            <div className="row">
           <div className="col-sm-4 grid-margin">
+
             <div className="card">
               <div className="card-body">
-                <h5>King Cobra</h5>
+              <Link to="/GroupPage">
+   <h5>King Cobra</h5>
+   </Link>
+
                 <div className="row">
                   <div className="col-8 col-sm-12 col-xl-8 my-auto">
                     <div className="d-flex d-sm-block d-md-flex align-items-center">

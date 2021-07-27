@@ -156,6 +156,9 @@ class Sidebar extends Component {
                 <ul className="nav flex-column sub-menu">
                   <li className="nav-item"> <Link className={ this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link' } to="/form-elements/basic-elements"><Trans>գրանցել ուսանող</Trans></Link></li>
                 </ul>
+                <ul className="nav flex-column sub-menu">
+                  <li className="nav-item"> <Link className={ this.isPathActive('/Payment') ? 'nav-link active' : 'nav-link' } to="/Payment"><Trans>Վճարումներ</Trans></Link></li>
+                </ul>
               </div>
             </Collapse>
           </li>    
