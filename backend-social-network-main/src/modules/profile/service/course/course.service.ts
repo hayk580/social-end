@@ -9,16 +9,12 @@ import { from } from 'rxjs';
 export default class CourseService {
   constructor(private readonly courseRepository: CourseRepository) {}
 
-  async addCourse(authorId: ObjectId, username: string, avatar: string,  dto: CourseDTO) {
+  async addCourse( dto: CourseDTO) {
     return this.courseRepository.create(
       {
         ...dto,
-        authorId,
-        username,
-        avatar,
         createdIn: new Date(),
       },
-      authorId,
     );
   }
 
@@ -33,18 +29,13 @@ export default class CourseService {
  }
 
 
- async addCourseModule(id: ObjectId, courseID: ObjectId){
- 
-  return this.courseRepository.addCourseModule(id, courseID)
- 
-}
 
 
   async changeCourse(authorId: ObjectId, courseId: ObjectId, dto: CourseDTO) {
     return this.courseRepository.update(courseId, dto);
   }
 
-  async deleteCourse(courseId: ObjectId, authorId: ObjectId) {
-    return this.courseRepository.delete(courseId, authorId);
-  }
+  // async deleteCourse(courseId: ObjectId, authorId: ObjectId) {
+  //   return this.courseRepository.delete(courseId, authorId);
+  // }
 }

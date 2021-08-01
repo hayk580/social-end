@@ -10,21 +10,9 @@ export type CourseDocument = Course & Document;
 @Schema()
 export class Course {
 
-@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-  authorId: User;
 
-@Prop({ type: String, ref: 'User' })
-  username: User;
-
-  @Prop({ type: String, ref: 'User' })
-  avatar: User;
 
   
-  @Prop({ type: String, min: 5, max: 25, required: true})
-  title: string;
-
-  @Prop({ type: String, min: 5, max: 25, required: true })
-  desc: string;
 
   @Prop({ type: String, default: '' })
   photo: string;
@@ -40,17 +28,36 @@ export class Course {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PostComment' }],
   })
 
-  @Prop({  type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course_module'}] })
-    course_module: Course_module[];
-
-
-  comments: PostComment[];
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
   reposts: User[];
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
   students: User[];
+
+
+
+
+  @Prop({ type: String, default: '' })
+  parentId: string;
+
+
+  @Prop({ type: String, default: '' })
+  start: string;
+
+
+  @Prop({ type: String, default: '' })
+  end: string;
+
+
+  @Prop({ type: String, default: '' })
+  title: string;
+
+  @Prop({ type: String, default: '' })
+  color: string;
+
+  @Prop({ type: String, default: '' })
+  id: string;
 }
 
 export const CourseSchema = SchemaFactory.createForClass(Course);

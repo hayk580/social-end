@@ -18,9 +18,9 @@ import { ObjectId } from 'mongoose';
     constructor(private readonly courseService: CourseService) {}
   
     @Post('/create')
-    @UseGuards(JwtGuard)
-    async createCourse(@Body() dto: CourseVerifiedDto,  @Request() req) {
-      return this.courseService.addCourse(req.user._id, req.user.username, req.user.avatar, dto);
+    // @UseGuards(JwtGuard)
+    async createCourse(@Body() dto: CourseVerifiedDto) {
+      return this.courseService.addCourse( dto);
     }
   
     @Get(':id')
@@ -37,21 +37,16 @@ import { ObjectId } from 'mongoose';
    
 
 
-   @Post('addcoursemodule/:id/:courseID')
-   async addCourseModule(@Param('id') id: ObjectId, @Param('courseID') courseID: ObjectId) 
-   {
-     return this.courseService.addCourseModule(id, courseID);
-   }
-
+  
 
 
 
    
-   @Delete(':id')
-    @UseGuards(JwtGuard)
-    async deleteCourse(@Request() req, @Param('id') courseId: ObjectId) {
-      return this.courseService.deleteCourse(courseId, req.user._id);
-    }
+  //  @Delete(':id')
+  //   @UseGuards(JwtGuard)
+  //   async deleteCourse(@Request() req, @Param('id') courseId: ObjectId) {
+  //     return this.courseService.deleteCourse(courseId, req.user._id);
+  //   }
   
     @Put(':id')
     @UseGuards(JwtGuard)

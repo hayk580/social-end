@@ -12,13 +12,7 @@ export class CourseVerifiedDto {
 
   photo?: any;
 
-  @MinLength(5, {
-    message: 'min length 5',
-  })
-  @MaxLength(335, {
-    message: 'max lenth 335',
-  })
-  desc: string;
+  
 }
 
 
@@ -30,7 +24,6 @@ export type CourseDTO = {
   readonly authorId?: ObjectId[];
   readonly title?: string;
   readonly photo?: any;
-  readonly desc?: string;
   readonly deadline?: string;
   readonly createdId?: Date;
   readonly comments?: ObjectId[];

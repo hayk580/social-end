@@ -9,7 +9,7 @@ export default class CourseViewController {
     }
 
     @Get('all')
-    @UseGuards(JwtGuard)
+    // @UseGuards(JwtGuard)
     async getAllCourses() {
         return this.courseViewService.getAllCourses();
     }
