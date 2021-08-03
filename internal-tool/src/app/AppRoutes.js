@@ -61,7 +61,7 @@ class AppRoutes extends Component {
          <Route path="/CoursePage" component={CoursePage} />
          <Route path="/lesson_schedule" component={Lesson_Schedule} />
 
-         <Route path="/SingleCoursePage" component={SingleCoursePage} />
+         {/* <Route path="/SingleCoursePage" component={SingleCoursePage} /> */}
          <Route path="/CourseModule" component={CourseModule} />
       {/* <Route path="/task_board" component={TrelloTaskBoard} /> */}
 
@@ -86,6 +86,7 @@ class AppRoutes extends Component {
           <Route path="/error-pages/error-404" component={ Error404 } />
           <Route path="/error-pages/error-500" component={ Error500 } />
 
+          <Route path='/SingleCoursePage/:slug' render={(props) => <SingleCoursePage {...props} key={(Math.random() * 10)}/>} />
 
           <Redirect to="/dashboard" />
         </Switch>

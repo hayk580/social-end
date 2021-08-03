@@ -223,7 +223,7 @@ componentDidMount()
                           </div>
                         </div>
                         <div className="preview-item-content d-sm-flex flex-grow">
-                        <Link to="/SingleCoursePage">
+                        <Link to={ "/SingleCoursePage/" + data.id}>
 
                           <div className="flex-grow">
                             <h6 className="preview-subject">{data.title }</h6>

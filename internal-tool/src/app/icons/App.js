@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 
 import Gantt, { Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, Toolbar, Item, Validation } from 'devextreme-react/gantt';
 

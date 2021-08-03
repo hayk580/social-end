@@ -12,4 +12,10 @@ export default class CourseViewService {
   async getSubCourses(subscriptions) {
     return this.getCourseRepository.getSubCourses(subscriptions);
   }
+ 
+
+  async getCourseModule(id) {
+    return this.getCourseRepository.getCourseModule(id)
+  }
+
 }

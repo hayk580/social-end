@@ -27,4 +27,10 @@ export default class GetCourseRepository {
       .populate('reposts')
       .sort('-createdIn');
   }
+
+
+  async getCourseModule(id) 
+  {
+    return this.courseModel.find({parentId: id})
+  } 
 }

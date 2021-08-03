@@ -1,139 +1,125 @@
-import React, { Component } from 'react';
-import { Doughnut } from 'react-chartjs-2';
-import Slider from "react-slick";
-import { TodoListComponent } from '../apps/TodoList'
-import { VectorMap } from "react-jvectormap"
+import React, { Component, useState } from 'react';
 
-import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useParams, Link } from "react-router-dom";
+
+import { Modal, Button, Form } from 'react-bootstrap';
+export default function SingleCoursePage() {
+
+  
+  const {slug} = useParams();
+  const [modelesdata, setModulesdata] = useState([]); 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [users, setUsers] = useState([]);
+  const [handeluser, sethandeluser] = useState([]);
+
+       
+React.useEffect(() => {
+
+  // axios.get("http://localhost:3001/api/getcourses/course_modules/" + slug)
+  //    .then(res => {
+  //      const datas = res.data;
+  //      setModulesdata(datas)
+  //    })
+
+     axios.get("http://localhost:3001/api/admin/users")
+     .then(res => {
+       const data = res.data
+        setUsers(data)
+      })
+
+ 
+});
+
+console.log(handeluser)
+
+const handelUser = ({target}) =>{
+  sethandeluser(target)
+
+}
+       
 
 
-export class SingleCoursePage extends Component {
 
-  transactionHistoryData =  {
-    labels: ["c++", "java","node.js"],
-    datasets: [{
-        data: [55, 25, 20],
-        backgroundColor: [
-          "#111111","#00d25b","#ffab00"
-        ]
-      }
-    ]
-  };
-
-  transactionHistoryOptions = {
-    responsive: true,
-    maintainAspectRatio: true,
-    segmentShowStroke: false,
-    cutoutPercentage: 70,
-    elements: {
-      arc: {
-          borderWidth: 0
-      }
-    },      
-    legend: {
-      display: false
-    },
-    tooltips: {
-      enabled: true
-    }
-  }
-
-  sliderSettings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  }
-
-  render () {
     return (
-      <div>
-{/*  
-        <div className="row">
-          <div className="col-xl-3 col-sm-6 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-9">
-                    <div className="d-flex align-items-center align-self-start">
-                      <h3 className="mb-0">1420</h3>
-                      <p className="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
-                    </div>
-                  </div>
-                  <div className="col-3">
-                    <div className="icon icon-box-success ">
-                      <span className="mdi mdi-arrow-top-right icon-item"></span>
-                    </div>
-                  </div>
-                </div>
-                <h6 className="text-muted font-weight-normal">Number of students</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-3 col-sm-6 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-9">
-                    <div className="d-flex align-items-center align-self-start">
-                      <h3 className="mb-0">$17.34</h3>
-                      <p className="text-success ml-2 mb-0 font-weight-medium">+11%</p>
-                    </div>
-                  </div>
-                  <div className="col-3">
-                    <div className="icon icon-box-success">
-                      <span className="mdi mdi-arrow-top-right icon-item"></span>
-                    </div>
-                  </div>
-                </div>
-                <h6 className="text-muted font-weight-normal">Revenue current</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-3 col-sm-6 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-9">
-                    <div className="d-flex align-items-center align-self-start">
-                      <h3 className="mb-0">$12.34</h3>
-                      <p className="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p>
-                    </div>
-                  </div>
-                  <div className="col-3">
-                    <div className="icon icon-box-danger">
-                      <span className="mdi mdi-arrow-bottom-left icon-item"></span>
-                    </div>
-                  </div>
-                </div>
-                <h6 className="text-muted font-weight-normal">Daily Income</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-3 col-sm-6 grid-margin stretch-card">
-            <div className="card">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-9">
-                    <div className="d-flex align-items-center align-self-start">
-                      <h3 className="mb-0">$31.53</h3>
-                      <p className="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
-                    </div>
-                  </div>
-                  <div className="col-3">
-                    <div className="icon icon-box-success ">
-                      <span className="mdi mdi-arrow-top-right icon-item"></span>
-                    </div>
-                  </div>
-                </div>
-                <h6 className="text-muted font-weight-normal">Expense current</h6>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
-             
+      
+      <div>
+
+<>
+      <Modal show={show} onHide={handleClose}       size="lg"  >
+        <Modal.Header closeButton>
+          <Modal.Title>ավելացնել ուսանողներ</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div className="col-12 grid-margin">
+            <div className="card">
+              
+
+              <div className="card-body">
+
+                <h4 className="card-title">ուսանողներ</h4>
+                <div className="table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                       <th>հ/հ</th>
+                        <th>
+                         նշել
+                        </th>
+                        <th>  անուն  </th>
+                        <th> ազգանուն </th>
+                        <th> Էլեկտրոնային հասցե </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {  users.map(user => 
+                      <tr>
+                        <td></td>
+                        <td>
+                          <div className="form-check form-check-muted m-0">
+                            <label className="form-check-label">
+                              <input type="checkbox" className="form-check-input" value={user._id}  checked={handelUser} />
+                              <i className="input-helper"></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td>
+                           {user.firstname}
+                        </td>
+                        <td>{user.lastname} </td>
+                        <td>{user.email} </td>
+                     
+                      </tr>
+          )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+    
+
+
+
+
+
+
+
 
 
         <div className="row">
@@ -148,17 +134,18 @@ export class SingleCoursePage extends Component {
                 <div className="row">
                   <div className="col-12">
                     <div className="preview-list">
+                      {modelesdata.map( data =>
                       <div className="preview-item border-bottom">
                         <div className="preview-thumbnail">
                           <div className="preview-icon bg-primary">
-                            <i className="mdi mdi-file-document"></i>
+                            <i className="mdi mdi-lightbulb-on-outline"></i>
                           </div>
                         </div>
                         <div className="preview-item-content d-sm-flex flex-grow">
                          <Link to="/CourseModule">
                           <div className="flex-grow">
-                            <h6 className="preview-subject">Տարական մաթեմատիկա</h6>
-                            <p className="text-muted mb-0"><span className="">Դասախոս: </span> Գրիգոր Կիրակոսյան</p>
+                            <h6 className="preview-subject">{data.title}</h6>
+                            {/* <p className="text-muted mb-0"><span className="">Դասախոս: </span> Գրիգոր Կիրակոսյան</p> */}
                           
                           </div>
                           </Link>
@@ -167,81 +154,9 @@ export class SingleCoursePage extends Component {
                             {/* <p className="text-muted mb-0">30 tasks, 5 issues </p> */}
                           </div>
                         </div>
-
-
-                        
+             
                       </div>
-
-
-
-
-
-                      <div className="preview-item border-bottom">
-                        <div className="preview-thumbnail">
-                          <div className="preview-icon bg-primary">
-                            <i className="mdi mdi-file-document"></i>
-                          </div>
-                        </div>
-                        <div className="preview-item-content d-sm-flex flex-grow">
-                          <div className="flex-grow">
-                            <h6 className="preview-subject">Գծային հանրահաշիվ</h6>
-                            <p className="text-muted mb-0"><span className="">Դասախոս: </span> Գրիգոր Կիրակոսյան</p>
-                          </div>
-                          <div className="mr-auto text-sm-right pt-2 pt-sm-0">
-                            {/* <p className="text-muted"><span className="">Դասախոս: </span> Գ․Կիրակոսայան</p> */}
-                            {/* <p className="text-muted mb-0">30 tasks, 5 issues </p> */}
-                          </div>
-                        </div>
-
-
-                        
-                      </div>
-
-
-
-
-                      <div className="preview-item border-bottom">
-                        <div className="preview-thumbnail">
-                          <div className="preview-icon bg-primary">
-                            <i className="mdi mdi-file-document"></i>
-                          </div>
-                        </div>
-                        <div className="preview-item-content d-sm-flex flex-grow">
-                          <div className="flex-grow">
-                            <h6 className="preview-subject">Դիսկրետ մաթեմատիկա</h6>
-                            <p className="text-muted mb-0"><span className="">Դասախոս: </span> Գրիգոր Կիրակոսյան</p>
-                          </div>
-                          <div className="mr-auto text-sm-right pt-2 pt-sm-0">
-                            {/* <p className="text-muted"><span className="">Դասախոս: </span> Գ․Կիրակոսայան</p> */}
-                            {/* <p className="text-muted mb-0">30 tasks, 5 issues </p> */}
-                          </div>
-                        </div>
-                        
-                      </div>
-
-
-
-                      <div className="preview-item border-bottom">
-                        <div className="preview-thumbnail">
-                          <div className="preview-icon bg-primary">
-                            <i className="mdi mdi-file-document"></i>
-                          </div>
-                        </div>
-                        <div className="preview-item-content d-sm-flex flex-grow">
-                          <div className="flex-grow">
-                            <h6 className="preview-subject">Ալգորիթմներ</h6>
-                            <p className="text-muted mb-0"><span className="">Դասախոս: </span> Գրիգոր Կիրակոսյան</p>
-                          </div>
-                          <div className="mr-auto text-sm-right pt-2 pt-sm-0">
-                            {/* <p className="text-muted"><span className="">Դասախոս: </span> Գ․Կիրակոսայան</p> */}
-                            {/* <p className="text-muted mb-0">30 tasks, 5 issues </p> */}
-                          </div>
-                        </div>
-                        
-                      </div>
-
-
-
+                      )}
 
 
 
@@ -264,7 +179,11 @@ export class SingleCoursePage extends Component {
         <div className="row ">
           <div className="col-12 grid-margin">
             <div className="card">
+              
+            <Button onClick={handleShow}>ավելացնել ուսանողներ</Button>
+
               <div className="card-body">
+
                 <h4 className="card-title">Դասընթացում գրանցված ուսանողներ</h4>
                 <div className="table-responsive">
                   <table className="table">
@@ -484,6 +403,4 @@ export class SingleCoursePage extends Component {
       </div> 
     );
   }
-}
 
-export default SingleCoursePage;

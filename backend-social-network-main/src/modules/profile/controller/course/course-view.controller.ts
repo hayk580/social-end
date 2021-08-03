@@ -1,4 +1,4 @@
-import {Controller, Get, UseGuards, Request} from '@nestjs/common';
+import {Controller, Get, UseGuards, Request, Param} from '@nestjs/common';
 
 import CourseViewService from '../../service/course/course-view.service'
 import JwtGuard from '../../../auth/guard/jwt.guard';
@@ -14,10 +14,20 @@ export default class CourseViewController {
         return this.courseViewService.getAllCourses();
     }
 
+
+
     @Get('sub')
     @UseGuards(JwtGuard)
     async getSubCourses(@Request() req) {
         console.log(req.user)
         return this.courseViewService.getSubCourses(req.user.subscriptions);
+    }
+
+
+
+    @Get('course_modules/:id')
+    async getCourseModules(@Param('id') id: string)
+    {
+        return this.courseViewService.getCourseModule(id)
     }
 }
