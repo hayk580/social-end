@@ -33,7 +33,7 @@ const CoursePage = lazy(() => import('./course_page/Course_page'));
  
 const CourseModule = lazy(()=> import('./course_module_page/Course_module_page'));
 
-const SingleCoursePage = lazy(() => import('./single_course_page /Single_course_page'))
+const SingleCoursePage = lazy(() => import('./single_course_page/Single_course_page'))
 
 const Group = lazy(() => import('./group/Group'))
 

@@ -19,17 +19,17 @@ export default function SingleCoursePage() {
        
 React.useEffect(() => {
 
-  // axios.get("http://localhost:3001/api/getcourses/course_modules/" + slug)
-  //    .then(res => {
-  //      const datas = res.data;
-  //      setModulesdata(datas)
-  //    })
-
-     axios.get("http://localhost:3001/api/admin/users")
+  axios.get("http://localhost:3001/api/getcourses/course_modules/" + slug)
      .then(res => {
-       const data = res.data
-        setUsers(data)
-      })
+       const datas = res.data;
+       setModulesdata(datas)
+     })
+
+    //  axios.get("http://localhost:3001/api/admin/users")
+    //  .then(res => {
+    //    const data = res.data
+    //     setUsers(data)
+    //   })
 
  
 });
@@ -76,7 +76,7 @@ const handelUser = ({target}) =>{
                       </tr>
                     </thead>
                     <tbody>
-                    {  users.map(user => 
+                    {/* {  users.map(user => 
                       <tr>
                         <td></td>
                         <td>
@@ -94,7 +94,7 @@ const handelUser = ({target}) =>{
                         <td>{user.email} </td>
                      
                       </tr>
-          )}
+          )} */}
                     </tbody>
                   </table>
                 </div>
